@@ -1,0 +1,57 @@
+<head>
+    <link rel="stylesheet" href="contact1.css">
+</head>
+
+<div class="contact-container">
+    <h2>Contact Us</h2>
+    <form id="contact-form" onsubmit="submitForm(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Your Name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Your Email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" placeholder="Your Phone Number (optional)">
+
+        <label for="subject">Subject:</label>
+        <select id="subject" required>
+            <option value="">Select a Subject</option>
+            <option value="general">General Inquiry</option>
+            <option value="support">Technical Support</option>
+            <option value="sales">Sales Inquiry</option>
+        </select>
+
+        <label for="message">Message:</label>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+
+    <div id="form-status"></div>
+</div>
+
+<script>
+    // Handle form submission
+    function submitForm(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+
+        if (name && email && message) {
+            // Store the name in localStorage
+            localStorage.setItem('userName', name);
+
+            // Redirect to the thank you page
+            window.location.href = 'thankyou.html';
+        } else {
+            // Display error message
+            document.getElementById('form-status').innerHTML = `<p>Please fill out all required fields.</p>`;
+            document.getElementById('form-status').style.color = 'red';
+        }
+    }
+</script>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Travel Planner</title>
+    <link rel="stylesheet" href="news.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Explore the World with Our Travel Planner</h1>
+            <p>Discover unique destinations tailored just for you!</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="plan.html">Plan Your Trip</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact Us</a>
+    </nav>
+
+    <section class="intro">
+        <h2>Plan the Perfect Trip</h2>
+        <p>Get personalized recommendations for destinations, accommodations, and experiences.</p>
+        <form id="trip-form">
+            <label for="budget">Select Budget:</label>
+            <select id="budget">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            
+            <label for="people">Number of People:</label>
+            <input type="number" id="people" placeholder="Enter number of people" />
+
+            <button type="button" onclick="planTrip()">Plan My Trip</button>
+        </form>
+    </section>
+
+    <section class="destinations">
+        <h2>Recommended Destinations</h2>
+        <div class="destination-container" id="destination-container">
+            <!-- Recommended destinations will appear here -->
+        </div>
+    </section>
+
+    <!-- AI Assistant Chatbot -->
+    <div class="chatbot">
+        <div class="chatbox">
+            <div class="chatbox-header">
+                <span>AI Travel Assistant</span>
+            </div>
+            <div class="chatbox-body" id="chatbox-body">
+                <!-- Chat messages will appear here -->
+            </div>
+            <input type="text" id="user-input" placeholder="Ask me anything about your trip...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Interactive Travel Planner | All Rights Reserved</p>
+    </footer>
+
+    <script src="script1.js"></script>
+</body>
+</html>

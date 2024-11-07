@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Destinations</title>
+    <link rel="stylesheet" href="recommendations.css">
+</head>
+<body>
+    <div class="header-container">
+        <h2>Recommended Destinations for You</h2>
+    </div>
+
+    <div class="recommendations-container" id="recommendations-container">
+        <!-- Recommendations will be displayed here -->
+    </div>
+
+    <!-- User Experiences Container -->
+    <div class="experiences-container" id="experiences-container">
+        <h3>What Travelers Are Saying</h3>
+        <!-- User experiences will be displayed here -->
+    </div>
+
+    <!-- More Places Container -->
+    <div class="more-places-container" id="more-places-container">
+        <h3>Explore More Places</h3>
+        <p>We have plenty more recommendations based on your budget and preferences. Discover beautiful destinations around the world and start planning your unforgettable journey!</p>
+    </div>
+
+    <script>
+        // Fetch the data from localStorage
+        const travelSeason = localStorage.getItem('travelSeason');
+        const budget = localStorage.getItem('budget');
+        const interests = localStorage.getItem('interests');
+        const people = localStorage.getItem('people');
+
+        // Update the header to show the user's input
+        document.querySelector('.header-container').innerHTML = `<h2>Recommendations for ${people} people during ${travelSeason}</h2>`;
+
+        const recommendationsContainer = document.getElementById('recommendations-container');
+        const experiencesContainer = document.getElementById('experiences-container');
+        let recommendations = [];
+        let experiences = [];
+
+        // Example destinations and reviews based on budget and season
+        if (budget === 'low') {
+            recommendations = [
+                { name: 'Hanoi, Vietnam', description: 'Affordable cultural experiences and street food.', image: 'https://vietnamtour.in/wp-content/uploads/VNIN_Hanoi_61.jpg' },
+                { name: 'Lisbon, Portugal', description: 'Budget-friendly European destination with rich culture.', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtW61YKVDskfLa_qysUCL23fqq8WxGTnC3dg&s' }
+            ];
+            experiences = [
+                { name: 'Sarah', review: 'Hanoi was incredible! The street food and the culture were amazing on a budget.' },
+                { name: 'Carlos', review: 'Lisbon is full of life and color! A great budget-friendly European escape.' }
+            ];
+        } else if (budget === 'medium') {
+            recommendations = [
+                { name: 'Paris, France', description: 'Visit the Eiffel Tower, Louvre, and more!', image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/15/6d/d6/paris.jpg?w=1400&h=1400&s=1' },
+                { name: 'Bali, Indonesia', description: 'Enjoy beautiful beaches and rich culture.', image: 'https://www.going.com/_next/image?url=https%3A%2F%2Fgoing-cms-strapi.s3.amazonaws.com%2F64d3d65ad1767dc0a382b38d_baliheader_c407957740.webp&w=3840&q=100&dpl=dpl_GhHDBZ2TTKvuJp46vFU27AJ2a6sY' }
+            ];
+            experiences = [
+                { name: 'Emily', review: 'Paris is always a good idea! Such a beautiful city with endless sights.' },
+                { name: 'James', review: 'Bali was a dream. The beaches were gorgeous, and it was the perfect balance of culture and relaxation.' }
+            ];
+        } else if (budget === 'high') {
+            recommendations = [
+                { name: 'Maldives', description: 'Luxury resorts and crystal-clear waters.', image: 'https://hips.hearstapps.com/hmg-prod/images/best-hotels-in-maldives-10-1664296626.jpg?crop=1xw:0.8896302474284127xh;center,top&resize=980:*' },
+                { name: 'Tokyo, Japan', description: 'Explore the modern city with traditional temples.', image: 'https://wanderlustcrew.com/wp-content/uploads/2018/10/What-to-do-in-Tokyo-Japan-Itinerary.jpg' }
+            ];
+            experiences = [
+                { name: 'Olivia', review: 'The Maldives were like paradise! Perfect for a luxurious getaway.' },
+                { name: 'Liam', review: 'Tokyo was a fantastic mix of tradition and modern life. Highly recommended!' }
+            ];
+        }
+
+        // Display recommendations dynamically
+        recommendations.forEach(dest => {
+            const card = document.createElement('div');
+            card.classList.add('destination-card');
+            card.innerHTML = `
+                <img src="${dest.image}" alt="${dest.name}">
+                <h3>${dest.name}</h3>
+                <p>${dest.description}</p>
+            `;
+            recommendationsContainer.appendChild(card);
+        });
+
+        // Display user experiences
+        experiences.forEach(exp => {
+            const reviewCard = document.createElement('div');
+            reviewCard.classList.add('experience-card');
+            reviewCard.innerHTML = `
+                <h4>${exp.name}</h4>
+                <p>"${exp.review}"</p>
+            `;
+            experiencesContainer.appendChild(reviewCard);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<head>
+    <link rel="stylesheet" href="plan1.css">
+</head>
+
+<div class="header-container">
+    <h2>Plan Your Trip</h2>
+</div>
+
+<div class="form-container">
+    <form id="trip-form" onsubmit="recommendDestinations(event)">
+        <label for="season">Travel Season:</label>
+        <select id="season" required>
+            <option value="winter">Winter</option>
+            <option value="spring">Spring</option>
+            <option value="summer">Summer</option>
+            <option value="fall">Fall</option>
+        </select>
+
+        <label for="budget">Budget:</label>
+        <select id="budget">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+
+        <label for="interests">Interests:</label>
+        <input type="text" id="interests" placeholder="e.g., beaches, mountains">
+
+        <label for="people">Number of People:</label>
+        <input type="number" id="people" placeholder="e.g., 2">
+
+        <button type="submit">Get Recommendations</button>
+    </form>
+</div>
+
+<script>
+    // Handle form submission and redirect to recommendations page
+    function recommendDestinations(event) {
+        event.preventDefault();  // Prevent the form from submitting normally
+
+        // Get form data
+        const season = document.getElementById('season').value;
+        const budget = document.getElementById('budget').value;
+        const interests = document.getElementById('interests').value;
+        const people = document.getElementById('people').value;
+
+        // Store the data in the localStorage to pass it to the next page
+        localStorage.setItem('travelSeason', season);
+        localStorage.setItem('budget', budget);
+        localStorage.setItem('interests', interests);
+        localStorage.setItem('people', people);
+
+        // Redirect to the recommendations page
+        window.location.href = 'recommendations.html';
+    }
+</script>
